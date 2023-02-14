@@ -3,10 +3,32 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Simple JS App</title>
+        <title>Pokemon App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="img/pokemon-logo.png" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <script src="js/script.js"></script>
+        <header class="page-header">
+            <img class="page-header__item" src="img/pokemon-logo.svg">
+            <h1 class="page-header__item">pokédex</h1>
+            <div class="page-header__item">
+                <label for="pokemon-search"></label>
+                <input type="search" id="pokemon-search" name="pokemon-search" placeholder="search pokémon" size="20" class="page-header__search">
+            </div>
+        </header>
+        <main>
+            <script src="js/script.js"></script>
+        </main>
+        <footer class="page-footer">
+            <div class="page-footer__links">
+                <a href="https://github.com/mrjoeladeniyi"><img src="./img/github.svg" alt="Joel Adeniyi Github" /><p>source code</p></a>
+                <a href="https://joeladeniyi.dev"><img src="img/portfolio-logo.svg"><p>developer's portfolio</p></a>
+                <a href="#"><img src="img/opensource-logo.png"><p>open source contributions</p></a>
+            </div>
+        </footer>
     </body>
 </html>
