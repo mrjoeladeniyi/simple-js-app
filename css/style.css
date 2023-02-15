@@ -54,7 +54,8 @@ main{
     flex-direction: column;
     line-height: 0.4;
     border-top: 1px solid;
-    margin-top: 33%;
+    margin-top: 10%;
+    min-width: 200px;
 }
 
 .page-footer__links{
