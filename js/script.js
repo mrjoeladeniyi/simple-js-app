@@ -6,6 +6,7 @@ let pokemonList = [
 ];
 
 // create for loop to iterate through pokemonList array and display it
+/*
 for (let i=0; i < pokemonList.length; i++){
     let pokemonHeight = " ("+"height: " + pokemonList[i].height +")" + "<br>";
 
@@ -15,6 +16,17 @@ for (let i=0; i < pokemonList.length; i++){
     }else{
         document.write("<h2>" + pokemonList[i].name + "</h2>" + pokemonHeight)
     }
-}
+*/
+
+// refactor for loop using forEach
+
+pokemonList.forEach(function(pokemon) {
+    // document.write("<h2>" + pokemon.name + "</h2>" + "height:" + pokemon.height + "<br>");
+    if (pokemon.height > 1.5){
+        document.write("<h2>" + pokemon.name + "</h2>" + pokemon.height + "<br>" + "Wow, that's big!")
+    }else{
+        document.write("<h2>" + pokemon.name + "</h2>" + " height:" + pokemon.height + "<br>");
+    }
+});
 
 // Highlight favorite pokémon
