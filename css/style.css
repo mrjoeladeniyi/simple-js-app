@@ -88,8 +88,7 @@ main{
     border:none;
     display: inline-block;
     font-family: inherit;
-    background-color:#721c16d7;
-;
+    background-color:#7e2019d7;
     color: #ffffff;
     text-decoration: none;
     padding: 10px;
@@ -99,6 +98,13 @@ main{
     height: 100px;
     margin: 5px;
 
+}
+
+button:hover,
+button:focus
+{
+    cursor: pointer;
+    opacity: 0.9;
 }
 
 @media all and (max-width: 500px){
