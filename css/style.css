@@ -77,6 +77,29 @@ main{
     float: left;
     height: 20px;
 }
+.pokemon-list{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pokemon-button{
+    border:none;
+    display: inline-block;
+    font-family: inherit;
+    background-color:#721c16d7;
+;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 3px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    width: 400px;
+    height: 100px;
+    margin: 5px;
+
+}
 
 @media all and (max-width: 500px){
     .page-header__item:nth-child(2){
@@ -85,5 +108,15 @@ main{
 
     .page-header__search{
         width: 200px;
+    }
+
+    .pokemon-list{
+        display: flex;
+        align-items: center;
+    }
+
+    .pokemon-button{
+        width: 300px;
+        height: 60px;
     }
 }
