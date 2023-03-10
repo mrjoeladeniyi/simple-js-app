@@ -126,3 +126,16 @@ button:focus
         height: 60px;
     }
 }
+
+.loading-message-container{
+    z-index: 9; /*puts the container above content of the page*/
+    background-color: #ac9695;
+    opacity: 90%;
+    width: 100px;
+    height: 100px;
+}
+
+.message{
+    font-family: inherit;
+    font-size: 10px;
+}

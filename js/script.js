@@ -2,26 +2,24 @@
 // using IIFE to create a self-executing function()
 let pokemonRepository = (function() {
 
-    let pokemonList = [
-    {name: 'Charizard', type: ['fire', 'flying' ], height: 1.7},
-    {name: 'Nidoking', type: ['ground', 'poison'], height: 1.4},
-    {name: 'Golem', type:['ground', 'rock'], height: 1.4},
-    {name: 'Fearow', type:['flying', 'normal'], height: 1.2},
-    ]
+    let pokemonList = [];
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
     function add(pokemon) {
-        pokemonList.push(pokemon);
+        // pokemonList.push(pokemon);
 
         // working on checking the condition of typeof object
         // typeof pokemon === 'object';
-        /*
-        if (typeof pokemonInput === 'object') {
-            return (pokemon + ' is not an object');
+        if (
+            typeof pokemon === "object"
+            && "name" in pokemon
+            //&& "detailsUrl" in pokemon
+            //&& "height" in pokemon
+        ) {
+        pokemonList.push(pokemon);
         }else{
-            pokemonInput;
-            console.log(typeof pokemon);
+            console.log("pokemon is not correct");
         }
-        */
     }
 
     function getAll() {
@@ -32,11 +30,13 @@ let pokemonRepository = (function() {
         appEventListener(pokemon);
     }
 
-    function showDetails(pokemon) {
-        console.log(pokemon.name);
+    function showDetails(item) {
+        pokemonRepository.loadDetails(item).then(function(){
+            console.log(item);
+        });
     }
 
-    // added evenListner to condition
+    // added evenListner to condition & interact with DOM
     function appEventListener(pokemon){
         let listOfPokemons = document.querySelector('.pokemon-list');
         let listItem = document.createElement('li');
@@ -55,32 +55,89 @@ let pokemonRepository = (function() {
         }
     }
 
+    // TASK: testing delaying the load screen for 3 seconds
+    /*
+    function delayLoadList() {
+        let delayedLoadList = new Promise(function(){
+            setTimeout(function() {
+                return fetch(apiUrl);
+            }, 3000);
+        });
+        return delayedLoadList;
+    }
+    */
+
+    function loadList() {
+        showLoadingMessage()
+
+        return fetch(apiUrl).then(function(response){
+            return response.json();
+        }).then(function(json){
+            json.results.forEach(function(item){
+                let pokemon = {
+                    name : item.name,
+                    detailsUrl : item.url
+                };
+                add(pokemon);
+            });
+        }).catch(function(error){
+            console.error(error);
+        })
+    }
+
+    function loadDetails(item) {
+        showLoadingMessage()
+        let url = item.detailsUrl;
+        return fetch(url).then(function(response) {
+            return response.json();
+        }).then(function(details) {
+            item.imageUrl = details.sprites.front_default;
+            item.height = details.height;
+            item.types = details.type;
+        }).catch(function (e) {
+            console.error(e);
+        });
+    }
+
+    function showLoadingMessage() {
+        let loadingMessageContainer = document.querySelector('.loading-message-container');
+        let message = document.createElement('p');
+        message.classList.add('message');
+
+        loadingMessageContainer.appendChild(message);
+        message.innerText = "Pokémon Loading..."
+        //window.alert("Pokémon Loading...")
+    }
+
+    function hideLoadingMessage() {
+
+    }
+
     return{
         add: add,
         getAll: getAll,
         addListItem: addListItem,
         showDetails: showDetails,
-        appEventListener: appEventListener
+        appEventListener: appEventListener,
+        loadList: loadList,
+        loadDetails: loadDetails,
+        showLoadingMessage: showLoadingMessage,
+        //delayLoadList: delayLoadList
     };
 
 })();
-
-pokemonRepository.add({name: 'Joel', type: ['fire'], height: 2.0})
 
 // create new variable with the function pokemonRepository
 let pokemonList = pokemonRepository.getAll();
 
 // loop function forEach item in pokemonList array
-pokemonList.forEach(function(pokemon) {
-    pokemonRepository.addListItem(pokemon)
-});
+pokemonRepository.loadList().then(function() {
+    pokemonList.forEach(function(pokemon) {
+        pokemonRepository.addListItem(pokemon);
+    });
+})
+
 
 // testing if the new function logs to console
 console.log(pokemonRepository.getAll());
-
-
-let checkType = typeof(value);
-
-
-
 console.log(pokemonList.length)
