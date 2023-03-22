@@ -3,7 +3,7 @@
 let pokemonRepository = (function() {
 
     let pokemonList = [];
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=20';
 
     function add(pokemon) {
         // pokemonList.push(pokemon);
@@ -68,7 +68,7 @@ let pokemonRepository = (function() {
     */
 
     function loadList() {
-        showLoadingMessage()
+        //showLoadingMessage()
 
         return fetch(apiUrl).then(function(response){
             return response.json();
@@ -86,7 +86,7 @@ let pokemonRepository = (function() {
     }
 
     function loadDetails(item) {
-        showLoadingMessage()
+        //showLoadingMessage()
         let url = item.detailsUrl;
         return fetch(url).then(function(response) {
             return response.json();
@@ -100,17 +100,25 @@ let pokemonRepository = (function() {
     }
 
     function showLoadingMessage() {
-        let loadingMessageContainer = document.querySelector('.loading-message-container');
+        let loadingMessageContainer = document.createElement('div');
         let message = document.createElement('p');
+        loadingMessageContainer.classList.add('loading-message-container');
         message.classList.add('message');
+        message.innerText = "Pokémon Loading..."
 
         loadingMessageContainer.appendChild(message);
-        message.innerText = "Pokémon Loading..."
+
         //window.alert("Pokémon Loading...")
     }
 
     function hideLoadingMessage() {
+        let loadingMessageContainer = document.createElement('div');
+        let message = document.createElement('p');
+        loadingMessageContainer.classList.add('loading-message-container');
+        message.classList.add('message');
+        message.innerText = "Pokémon Loading..."
 
+        loadingMessageContainer.removeChild(message);
     }
 
     return{
@@ -121,7 +129,8 @@ let pokemonRepository = (function() {
         appEventListener: appEventListener,
         loadList: loadList,
         loadDetails: loadDetails,
-        showLoadingMessage: showLoadingMessage,
+        //showLoadingMessage: showLoadingMessage,
+        //hideLoadingMessage: hideLoadingMessage,
         //delayLoadList: delayLoadList
     };
 
