@@ -4,6 +4,7 @@ let pokemonRepository = (function() {
 
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=20';
+    let modalContainer = document.querySelector('#modal-container');
 
     function add(pokemon) {
         // pokemonList.push(pokemon);
@@ -30,10 +31,54 @@ let pokemonRepository = (function() {
         appEventListener(pokemon);
     }
 
-    function showDetails(item) {
-        pokemonRepository.loadDetails(item).then(function(){
-            console.log(item);
+    function showDetails(pokemon) {
+        pokemonRepository.loadDetails(pokemon).then(function(){
+            console.log(pokemon);
+            showModal("Name:" + pokemon.name,"Height:" + pokemon.height, pokemon.imageUrl);
         });
+
+    }
+
+    function showModal(title, text, image) {
+
+        modalContainer.innerHTML = '';
+
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        let modalClose = document.createElement('button');
+        modalClose.classList.add('modal-close');
+        modalClose.innerText = 'Close';
+        modalClose.addEventListener('click', hideModal);
+
+        let nameElement = document.createElement('h1');
+        nameElement.innerText = title;
+
+        let heightElement = document.createElement('p');
+        heightElement.innerText = text;
+
+        let imageElement = document.createElement('img');
+        imageElement.src = image;
+
+        modal.appendChild(modalClose);
+        modal.appendChild(nameElement);
+        modal.appendChild(heightElement);
+        modal.appendChild(imageElement);
+        modalContainer.appendChild(modal);
+
+        modalContainer.classList.add("is-visible");
+
+        modalContainer.addEventListener('click', function(e){
+            let target = e.target;
+            if (target === modalContainer) {
+                hideModal();
+            }
+        });
+
+    }
+
+    function hideModal() {
+        modalContainer.classList.remove('is-visible');
     }
 
     // added evenListner to condition & interact with DOM
@@ -53,6 +98,7 @@ let pokemonRepository = (function() {
         }else{
             button.innerText = pokemon.name;
         }
+
     }
 
     // TASK: testing delaying the load screen for 3 seconds
@@ -121,6 +167,13 @@ let pokemonRepository = (function() {
         loadingMessageContainer.removeChild(message);
     }
 
+    window.addEventListener('keydown', (e) => {
+        let modalContainer = document.querySelector('#modal-container');
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+        hideModal();
+        }
+    });
+
     return{
         add: add,
         getAll: getAll,
@@ -129,6 +182,8 @@ let pokemonRepository = (function() {
         appEventListener: appEventListener,
         loadList: loadList,
         loadDetails: loadDetails,
+        //showModal: showModal,
+        //hideModal: hideModal,
         //showLoadingMessage: showLoadingMessage,
         //hideLoadingMessage: hideLoadingMessage,
         //delayLoadList: delayLoadList

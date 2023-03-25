@@ -8,4 +8,4 @@ Create a small web application using HTML, CSS and JavaScript that loads data fr
 ## Project dependencies
 undefined
 ## APIs
-undefined
+https://pokeapi.co/api/v2/pokemon/?limit=20
