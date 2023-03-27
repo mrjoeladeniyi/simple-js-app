@@ -5,7 +5,5 @@ Create a small web application using HTML, CSS and JavaScript that loads data fr
 * Load data from a public API.
 * View a list of items.
 * Accept user actions for veiwing details of items.
-## Project dependencies
-undefined
 ## APIs
 https://pokeapi.co/api/v2/pokemon/?limit=20

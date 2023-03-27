@@ -101,18 +101,6 @@ let pokemonRepository = (function() {
 
     }
 
-    // TASK: testing delaying the load screen for 3 seconds
-    /*
-    function delayLoadList() {
-        let delayedLoadList = new Promise(function(){
-            setTimeout(function() {
-                return fetch(apiUrl);
-            }, 3000);
-        });
-        return delayedLoadList;
-    }
-    */
-
     function loadList() {
         //showLoadingMessage()
 
@@ -145,6 +133,7 @@ let pokemonRepository = (function() {
         });
     }
 
+    // this function shows a loading message while waiting for the pokémon list to load
     function showLoadingMessage() {
         let loadingMessageContainer = document.createElement('div');
         let message = document.createElement('p');
@@ -181,12 +170,8 @@ let pokemonRepository = (function() {
         showDetails: showDetails,
         appEventListener: appEventListener,
         loadList: loadList,
-        loadDetails: loadDetails,
-        //showModal: showModal,
-        //hideModal: hideModal,
-        //showLoadingMessage: showLoadingMessage,
-        //hideLoadingMessage: hideLoadingMessage,
-        //delayLoadList: delayLoadList
+        loadDetails: loadDetails
+
     };
 
 })();
@@ -194,7 +179,7 @@ let pokemonRepository = (function() {
 // create new variable with the function pokemonRepository
 let pokemonList = pokemonRepository.getAll();
 
-// loop function forEach item in pokemonList array
+// loop through each item in pokemonList array forEach function
 pokemonRepository.loadList().then(function() {
     pokemonList.forEach(function(pokemon) {
         pokemonRepository.addListItem(pokemon);
