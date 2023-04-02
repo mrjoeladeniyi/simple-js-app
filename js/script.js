@@ -80,12 +80,27 @@ let pokemonRepository = (function () {
     modalContainer.classList.remove("is-visible");
   }
 
-  // added evenListner to condition & interact with DOM
+  // This function shows a list of fetched pokemon and adds evenListner to condition & interact with DOM
   function appEventListener(pokemon) {
-    let listOfPokemons = document.querySelector(".pokemon-list");
-    let listItem = document.createElement("li");
-    let button = document.createElement("button");
-    button.classList.add("pokemon-button");
+    //let listOfPokemons = document.querySelector(".list-group");
+    let pokemonList = $(".list-group");
+
+    let li = $("<li></li>");
+    li.addClass("list-group-item");
+
+    let button = $("<button></button>");
+    button.addClass("btn");
+
+    pokemonList.append(li);
+
+
+
+    //let listItem = document.createElement("li");
+    listItem.classList.add("list-group-item");
+    //let button = document.createElement("button");
+    button.classList.add("btn");
+    listOfPokemons.appendChild(listItem);
+    listItem.appendChild(button);
     button.addEventListener("click", function () {
       showDetails(pokemon);
     });
