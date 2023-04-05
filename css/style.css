@@ -82,6 +82,13 @@ footer div a p {
 }
 .modal-header {
     color: white;
+    align-items: center;
+}
+.modal-header h1{
+    margin-right: 14px;
+}
+.modal-header .close{
+    color: white;
 }
 .modal-content {
     background-color: black;

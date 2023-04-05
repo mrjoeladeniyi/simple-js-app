@@ -46,9 +46,10 @@ let pokemonRepository = (function () {
 
     modalTitle.empty();
     modalBody.empty();
+    modalHeader.empty();
 
-
-    let nameElement = $("<h1>" + pokemon.name +  "</h1>");
+    let idElement = $("<h1>" + "#" + pokemon.id + "</h1>");
+    let nameElement = $("<h1>" + pokemon.name + "</h1>");
 
     let divElement = $("<div></div>");
 
@@ -60,6 +61,9 @@ let pokemonRepository = (function () {
 
     let itemTypeElement = $("<p>" + "Type : " + pokemon.type + "</p>");
 
+    modalHeader.append(idElement);
+    modalHeader.append(modalTitle);
+    modalHeader.append(close);
     modalTitle.append(nameElement);
     modalBody.append(imageElement);
     divElement.append(heightElement);
@@ -107,7 +111,8 @@ let pokemonRepository = (function () {
             weight: item.weight,
             typeOne: item.typeOne,
             typetwo: item.typeTwo,
-            type: item.type
+            type: item.type,
+            id: item.id
           };
           add(pokemon);
         });
@@ -127,6 +132,7 @@ let pokemonRepository = (function () {
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
         item.weight = details.weight;
+        item.id = details.id;
 
         dataType = details.types;
 
