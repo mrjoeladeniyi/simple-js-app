@@ -1,193 +1,96 @@
-/*
-background-color: #e7d4c1
-primary-text-color: #8b1a11
-secondary-text-color: #fafaf7
-*/
-
-*{
-    box-sizing: border-box;
-}
-
-body{
-    background-color: #f8f5f2;
-    font-family: 'Roboto Mono', monospace;
-}
-
-main{
-    height:auto;
-}
-
-.page-header{
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 700;
-    color: #720c05;
-    line-height: 1.0;
-    display: flex;
-}
-
-.page-header__item:first-child{
-    width:5%;
+.navbar img{
+    width: 5%;
     height: auto;
-    margin-right: 1%;
 }
 
-.page-header__item:last-child{
-    flex-grow: 1;
+.navbar h1 {
+    font-family:'Roboto Mono', monospace;
+    font-weight: 400;
+}
+
+.bg-dark {
     display: flex;
-    text-align: right;
     justify-content: flex-start;
-    align-items: center;
-    margin-left: 30px;
+    background-color: hsl(11deg 89.43% 27.69%)!important;
 }
 
-.page-header__search{
-    width: 300px;
+.input-group-append img{
+    width: 50px;
+    margin-left: -11px;
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        width: 100%;
+    }
+
+    .navbar img {
+        width: 5%;
+    }
+
+    .form-inline input {
+        width: 78%;
+    }
+
+    .form-inline img{
+        width: 21%;
+        margin-left: 0px;
+    }
+}
+
+footer div a{
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+
+footer div a .navbar img{
+    width: 5%;
+}
+
+footer div a p {
+    font-size: 12px;
+    color: #972424;
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+
+.btn-link{
+    color:hsl(11deg 89.43% 27.69%);
+}
+.btn-link:hover {
+    color: hsla(11,80%,45%,1);
+}
+
+.modal-body .modal-img{
+    width: 40%;
     margin-right: 10px;
-    height: 25px;
 }
-
-.page-footer{
-    font-size: 10px;
+.modal-body{
     display: flex;
+    justify-content: center;
     align-items: center;
-    clear: both;
-    flex-direction: column;
-    line-height: 0.4;
-    border-top: 1px solid;
-    margin-top: 10%;
-    min-width: 200px;
+    width: 85%;
+    padding: 7px;
 }
-
-.page-footer__links{
-    display: flex;
-    flex-direction: column;
-    margin-top: 5px;
+.modal-body p{
+    font-size: 15px;
+    color: white;
 }
-
-.page-footer__links a{
-    display: flex;
+.modal-body div{
+    width: 50%;
 }
-
-.page-footer__links p{
-    margin-left: 4px;
-}
-
-.page-footer img{
-    width: 20px;
-    float: left;
-    height: 20px;
-}
-.pokemon-list{
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
+.modal-header {
+    color: white;
     align-items: center;
 }
-
-.pokemon-button
-{
-    border:none;
-    display: inline-block;
-    font-family: inherit;
-    background-color:#7e2019d7;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 3px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-    width: 400px;
-    height: 100px;
-    margin: 5px;
-
+.modal-header h1{
+    margin-right: 14px;
 }
-
-button:hover,
-button:focus
-{
-    cursor: pointer;
-    opacity: 0.9;
+.modal-header .close{
+    color: white;
 }
-
-@media all and (max-width: 500px){
-    .page-header__item:nth-child(2){
-        font-size: 20px;
-    }
-
-    .page-header__search{
-        width: 200px;
-    }
-
-    .pokemon-list{
-        display: flex;
-        align-items: center;
-    }
-
-    .pokemon-button{
-        width: 300px;
-        height: 60px;
-    }
-}
-
-.loading-message-container{
-    z-index: 9; /*puts the container above content of the page*/
-    background-color: #ac9695;
-    opacity: 90%;
-    width: 100px;
-    height: 100px;
-}
-
-.message{
-    font-family: inherit;
-    font-size: 10px;
-}
-
-#modal-container{
-  display:none;
-}
-
-#modal-container.is-visible {
-  position: fixed;
-  padding: 20px;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  /*z-index: 999;*/
-  display: grid;
-  text-align: center;
-
-}
-
-.modal{
-  margin: auto;
-  display: inline-block;
-  box-sizing: border-box;
-  background: #902727;
-  padding: 15px;
-  width: 100%;
-  max-width: 700px;
-  text-align: left;
-}
-
-.modal h1 {
-  margin-top: 0;
-  color: white;
-
-}
-
-.modal p {
-  margin-bottom: 0;
-  color: white;
-}
-
-
-.modal-close {
-  float: right;
-  /*-webkit-appearance: none;*/
-  border: 0;
-  background: none;
-  color: #777;
-  text-decoration: underline;
+.modal-content {
+    background-color: black;
+    width: 83%;
 }
