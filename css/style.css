@@ -36,6 +36,13 @@
         width: 21%;
         margin-left: 0px;
     }
+
+    .modal-header h1{
+       font-size: 143%;
+    }
+    .modal-title h1 {
+        font-size: 120%;
+    }
 }
 
 footer div a{
