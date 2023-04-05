@@ -250,3 +250,36 @@ footer div a p {
     margin-bottom: 0;
     margin-left: 5px;
 }
+
+.btn-link{
+    color:hsl(11deg 89.43% 27.69%);
+}
+.btn-link:hover {
+    color: hsla(11,80%,45%,1);
+}
+
+.modal-body .modal-img{
+    width: 40%;
+    margin-right: 10px;
+}
+.modal-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    padding: 7px;
+}
+.modal-body p{
+    font-size: 15px;
+    color: white;
+}
+.modal-body div{
+    width: 50%;
+}
+.modal-header {
+    color: white;
+}
+.modal-content {
+    background-color: black;
+    width: 83%;
+}
