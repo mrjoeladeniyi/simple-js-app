@@ -1,0 +1,13 @@
+{
+  "ignorePatterns": ["dist/", "*.dist.js", "*.dist.css"],
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "quotes": ["error", "single"]
+  }
+}
