@@ -1,4 +1,4 @@
-# simple-js-app
+# Pokédex
 ## Project description
 I created a web application using HTML, CSS and JavaScript that loads data from an external API and enables the viewing of data points in detail.
 ## How to get the project running
@@ -14,4 +14,13 @@ HTML, CSS, Javascript
 Jquery and Bootstrap
 
 ## Page sketch
-! [wire frame] (https://github.com/mrjoeladeniyi/simple-js-app/blob/6e37a2ddfb2c6cdd4fe9d52beec39ad6b02eba6f/img/wire-frame.jpeg)
+![wire frame](img/wire-frame.jpeg)
+
+## Final site
+This is the final look of the site. When you click on a pokémon, it pops up a card with details about the pokemon you clicked.
+
+![final site](img/final-site.png)
+
+Pokémon card is revealed when a pokémon name is clicked as shown below.
+
+![pokemon clicked](img/final-site-clicked.png)
