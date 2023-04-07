@@ -12,3 +12,6 @@ https://pokeapi.co/api/v2/pokemon/?limit=120
 HTML, CSS, Javascript
 ## Libraries
 Jquery and Bootstrap
+
+## Page sketch
+! [wire frame] (https://github.com/mrjoeladeniyi/simple-js-app/blob/6e37a2ddfb2c6cdd4fe9d52beec39ad6b02eba6f/img/wire-frame.jpeg)
