@@ -1,22 +1,22 @@
 let pokemonRepository = (function () {
-    let t = []
-    function e(e) {
-      'object' == typeof e && 'name' in e
-        ? t.push(e)
+    let e = []
+    function t(t) {
+      'object' == typeof t && 'name' in t
+        ? e.push(t)
         : console.log('pokemon is not correct')
     }
     function n() {
-      return t
+      return e
     }
-    function o(t) {
-      i(t)
+    function o(e) {
+      i(e)
     }
-    function p(t) {
-      pokemonRepository.loadDetails(t).then(function () {
-        var e
-        let n, o, p, i, a, l, d, r, s, m, c
-        console.log(t),
-          (e = t),
+    function p(e) {
+      pokemonRepository.loadDetails(e).then(function () {
+        var t
+        let n, o, p, i, a, l, d, r, s, c, m
+        console.log(e),
+          (t = e),
           $('.modal'),
           (n = $('.modal-body')),
           $('.modal-dialog'),
@@ -28,26 +28,26 @@ let pokemonRepository = (function () {
           p.empty(),
           n.empty(),
           o.empty(),
-          (a = $('<h1>#' + e.id + '</h1>')),
-          (l = $('<h1>' + e.name + '</h1>')),
+          (a = $('<h1>#' + t.id + '</h1>')),
+          (l = $('<h1>' + t.name + '</h1>')),
           (d = $('<div></div>')),
-          (r = $('<img class= "modal-img">')).attr('src', e.imageUrl),
-          (s = $('<p>Height : ' + e.height + '</p>')),
-          (m = $('<p>Weight : ' + e.weight + '</p>')),
-          (c = $('<p>Type : ' + e.type + '</p>')),
+          (r = $('<img class= "modal-img">')).attr('src', t.imageUrl),
+          (s = $('<p>Height : ' + t.height + '</p>')),
+          (c = $('<p>Weight : ' + t.weight + '</p>')),
+          (m = $('<p>Type : ' + t.type + '</p>')),
           o.append(a),
           o.append(p),
           o.append(i),
           p.append(l),
           n.append(r),
           d.append(s),
-          d.append(m),
           d.append(c),
+          d.append(m),
           n.append(d)
       })
     }
-    function i(t) {
-      let e = $('.list-group'),
+    function i(e) {
+      let t = $('.list-group'),
         n = $('<li></li>')
       n.addClass('list-group-item')
       let o = $('<button>').attr({
@@ -55,70 +55,79 @@ let pokemonRepository = (function () {
         'data-target': '#modal-container',
       })
       o.addClass('btn btn-lg btn-link')
-      let i = document.createTextNode(t.name)
-      e.append(n),
+      let i = document.createTextNode(e.name)
+      t.append(n),
         n.append(o),
         o.append(i),
         n.on('click', function () {
-          p(t)
+          p(e)
         })
     }
+    function a() {
+      $('#skeleton-container').show()
+    }
+    function l() {
+      $('#skeleton-container').hide()
+    }
     return {
-      add: e,
+      add: t,
       getAll: n,
       addListItem: o,
       showDetails: p,
       appEventListener: i,
-      loadList: function t() {
+      loadList: function e() {
         return fetch('https://pokeapi.co/api/v2/pokemon/?limit=150')
-          .then(function (t) {
-            return t.json()
+          .then(function (e) {
+            return a(), e.json()
           })
-          .then(function (t) {
-            t.results.forEach(function (t) {
-              e({
-                name: t.name,
-                detailsUrl: t.url,
-                weight: t.weight,
-                typeOne: t.typeOne,
-                typetwo: t.typeTwo,
-                type: t.type,
-                id: t.id,
+          .then(function (e) {
+            l(),
+              e.results.forEach(function (e) {
+                t({
+                  name: e.name,
+                  detailsUrl: e.url,
+                  weight: e.weight,
+                  typeOne: e.typeOne,
+                  typetwo: e.typeTwo,
+                  type: e.type,
+                  id: e.id,
+                })
               })
-            })
           })
-          .catch(function (t) {
-            console.error(t)
-          })
-      },
-      loadDetails: function t(e) {
-        return fetch(e.detailsUrl)
-          .then(function (t) {
-            return t.json()
-          })
-          .then(function (t) {
-            ;(e.imageUrl = t.sprites.front_default),
-              (e.height = t.height),
-              (e.weight = t.weight),
-              (e.id = t.id),
-              (dataType = t.types).length > 1
-                ? ((e.typeOne = t.types[0].type.name),
-                  (e.typeTwo = t.types[1].type.name))
-                : ((e.typeOne = t.types[0].type.name),
-                  (e.typeTwo = ''),
-                  (e.type = e.typeOne)),
-              (e.type = e.typeOne + ' ' + e.typeTwo)
-          })
-          .catch(function (t) {
-            console.error(t)
+          .catch(function (e) {
+            console.error(e)
           })
       },
+      loadDetails: function e(t) {
+        return fetch(t.detailsUrl)
+          .then(function (e) {
+            return e.json()
+          })
+          .then(function (e) {
+            ;(t.imageUrl = e.sprites.front_default),
+              (t.height = e.height),
+              (t.weight = e.weight),
+              (t.id = e.id),
+              (dataType = e.types).length > 1
+                ? ((t.typeOne = e.types[0].type.name),
+                  (t.typeTwo = e.types[1].type.name))
+                : ((t.typeOne = e.types[0].type.name),
+                  (t.typeTwo = ''),
+                  (t.type = t.typeOne)),
+              (t.type = t.typeOne + ' ' + t.typeTwo)
+          })
+          .catch(function (e) {
+            console.error(e)
+          })
+      },
+      loadingScreen: a,
+      hideScreen: l,
     }
   })(),
   pokemonList = pokemonRepository.getAll()
 pokemonRepository.loadList().then(function () {
-  pokemonList.forEach(function (t) {
-    pokemonRepository.addListItem(t)
+  pokemonList.forEach(function (e) {
+    pokemonRepository.addListItem(e)
   })
 }),
   console.log(pokemonRepository.getAll()),
