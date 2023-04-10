@@ -98,9 +98,11 @@ let pokemonRepository = (function () {
   function loadList() {
     return fetch(apiUrl)
       .then(function (response) {
+        loadingScreen()
         return response.json()
       })
       .then(function (json) {
+        hideScreen()
         json.results.forEach(function (item) {
           let pokemon = {
             name: item.name,
@@ -149,6 +151,15 @@ let pokemonRepository = (function () {
       })
   }
 
+  function loadingScreen() {
+    let skeletonContainer = $('#skeleton-container')
+    skeletonContainer.show()
+  }
+
+  function hideScreen() {
+    let skeletonContainer = $('#skeleton-container')
+    skeletonContainer.hide()
+  }
   return {
     add: add,
     getAll: getAll,
@@ -157,6 +168,8 @@ let pokemonRepository = (function () {
     appEventListener: appEventListener,
     loadList: loadList,
     loadDetails: loadDetails,
+    loadingScreen: loadingScreen,
+    hideScreen: hideScreen,
   }
 })()
 

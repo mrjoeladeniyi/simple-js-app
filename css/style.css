@@ -101,3 +101,43 @@ footer div a p {
   background-color: black;
   width: 100%;
 }
+
+.skeleton{
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+#skeleton-container{
+  display:none;
+}
+
+.skeleton-header{
+  display: flex;
+  margin: 2%;
+  align-items: center;
+  flex-direction: column;
+}
+.header__img{
+  width: 6%;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 1%;
+}
+.header__text{
+  width: 92%;
+  height: 40px;
+  margin: 1%;
+}
+#rect-logo{
+  width: 91%;
+  animation: skeleton-loading 3s infinite linear;
+}
+
+@keyframes skeleton-loading {
+   0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
